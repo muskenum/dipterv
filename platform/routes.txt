@@ -2,14 +2,15 @@ Játékosok és játékok
 
 -index.html - főoldal, amiről el lehet indulni (3 panel->games, sign up, log in)
 -login.html- login form, regisztráció gomb
--signup.html - signup form, küldés gomb
--games.html - táblázat (grid), új játék hozzáadása gomb
--upload.html - fájl feltöltése, form, cancel
--usersgames.html - táblázat (edit delete) új játék gomb
--gameedit.html - form (save, cancel)
--userdata.html - form (edit) save, cancel gombok
-
--chat.html - konzol
+-signup.html - signup form, cancel gomb
+-games.html - táblázat (grid), log in, sign up gombok, játékoknál view és play gombok
+-game.html - játék adatlapja, play, lobby-k listázása, edit gombok
+-lobby.html - adott játék lobby-ja, játékos adatai, lobby adatai, csapatválasztás, chat, start game gomb, ready gomb, cancel gomb
+-lobbies.html - az aktív lobby-k listázása táblázat, join gomb
+-upload.html - fájl feltöltése form, cancel
+-profile.html - edit gomb, játékos játékainak listázása gomb
+-usersgames.html - táblázat (edit), új játék gomb
+-chat.html - barátlista, chat konzol, küldés gomb
 
 Routing
 
