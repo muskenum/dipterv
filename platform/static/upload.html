@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/">Muskenum Games</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/games.html">Games</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload.html">Upload</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="chat.html">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="lobbies.html">Lobbies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="users.html">Users</a>
+                </li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-primary btn-outline-light" href="profile.html">Account</a>
+            <button type="button" class="btn btn-primary  btn-outline-light dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="profile.html">Profile settings</a>
+                <a class="dropdown-item" href="usersgames.html">My games</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/">Log out</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-3 col-md-3 col-12">
+        </div>
+        <div class="col-xl-6 col-md-6 col-12">
+            <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h1>Upload your own game</h1>
+                <p class="lead">Share your game with the world!</p>
+            </div>
+            <form id="newGameForm">
+                <div class="form-group">
+                    <br>
+                    <label for="inputGameName">Name of your game</label>
+                    <input type="text" class="form-control" id="inputGameName" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputDescription">Description</label>
+                    <textarea id="inputDescription" class="form-control" form="newGameForm" rows="5"
+                              placeholder="Say a few words about your game..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="inputGameFile">Select a file to upload</label>
+                    <input type="file" class="form-control-file" id="inputGameFile" required>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Save"/>
+                <a class="btn btn-link" href="/">Cancel</a>
+            </form>
+        </div>
+        <div class="col-xl-3 col-md-3 col-12">
+        </div>
+    </div>
+</div>
+<div class="container ">
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="container text-muted">
+            Muskenum Games
+            <small class="d-block mb-3">&copy; 2020</small>
+        </div>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>

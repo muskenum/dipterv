@@ -1,0 +1,21 @@
+Játékosok és játékok
+
+-index.html - főoldal, amiről el lehet indulni (3 panel->games, sign up, log in)
+-login.html- login form, regisztráció gomb
+-signup.html - signup form, küldés gomb
+-games.html - táblázat (grid), új játék hozzáadása gomb
+-upload.html - fájl feltöltése, form, cancel
+-usersgames.html - táblázat (edit delete) új játék gomb
+-gameedit.html - form (save, cancel)
+-userdata.html - form (edit) save, cancel gombok
+
+-chat.html - konzol
+
+Routing
+
+GET / - index.html
+GET /games                  - games.html
+GET /games/:userid          - usersgames.html
+GET /games/:userid/edit     - gameedit.html
+GET /users/:userid/games    - usersgames.html
+POST /login -jelszó ellenőrzés, ha ok, redirect a játékokra
