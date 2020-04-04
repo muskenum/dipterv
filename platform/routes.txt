@@ -7,16 +7,48 @@ Játékosok és játékok
 -game.html - játék adatlapja, play, lobby-k listázása, edit gombok
 -lobby.html - adott játék lobby-ja, játékos adatai, lobby adatai, csapatválasztás, chat, start game gomb, ready gomb, cancel gomb
 -lobbies.html - az aktív lobby-k listázása táblázat, join gomb
--upload.html - fájl feltöltése form, cancel
+-uploadedit.html - fájl feltöltése/szerkesztése form, cancel
 -profile.html - edit gomb, játékos játékainak listázása gomb
--usersgames.html - táblázat (edit), új játék gomb
+-users.html - táblázat, profil megtekintése, játékok gomb
+-usersgames.html - táblázat (edit), play gomb
 -chat.html - barátlista, chat konzol, küldés gomb
 
 Routing
 
-GET / - index.html
-GET /games                  - games.html
-GET /games/:userid          - usersgames.html
-GET /games/:userid/edit     - gameedit.html
-GET /users/:userid/games    - usersgames.html
-POST /login -jelszó ellenőrzés, ha ok, redirect a játékokra
+GET /                               - index.html
+GET /users                          - users.html
+GET /users/:userid                  - profile.html
+
+GET /users/edit/:userid             - profile.html
+POST /users/edit/:userid
+
+GET /users/:userid/games            - usersgames.html
+GET /games                          - games.html
+GET /games/:gameid                  - game.html
+
+GET /games/edit/:gameid             - uploadedit.html
+POST /games/edit/:gameid
+GET /games/del/:gameid
+
+GET /games/:gameid/owner            - profile.html
+GET /games/:userid                  - usersgames.html
+
+GET /games/new                      - uploadedit.html
+POST /games/new                     - játék hozzáadása
+
+GET /chat                           - chat.html
+POST /chat
+
+GET /login                          - login.html
+POST /login                         - jelszó ellenőrzés, ha ok, redirect a játékokra, ha nem, vissza a login screenre
+
+GET /signup                         - signup.html
+POST /signup
+
+GET /lobbies                        - lobbies.html
+GET /lobbies/:lobbyid               - lobby.html
+
+GET /lobbies/edit/:lobbyid          - lobby.html
+POST /lobbies/edit/:lobbyid
+
+GET /lobbies/:gameid                - lobbies.html (rászűrve a játékra)
