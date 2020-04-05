@@ -11,3 +11,16 @@
     padding-bottom: 30px;
     font-size: 2rem;
 }
+
+.radio-md .custom-control-label::before,
+.radio-md .custom-control-label::after {
+    top: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.radio-md .custom-control-label {
+    padding-top: 18px;
+    padding-left: 40px;
+    font-size: 1rem;
+}

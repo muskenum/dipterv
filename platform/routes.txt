@@ -1,4 +1,4 @@
-Játékosok és játékok
+Entitások: játékosok, játékok, lobby-k
 
 -index.html - főoldal, amiről el lehet indulni (3 panel->games, sign up, log in)
 -login.html- login form, regisztráció gomb
@@ -7,6 +7,7 @@ Játékosok és játékok
 -game.html - játék adatlapja, play, lobby-k listázása, edit gombok
 -lobby.html - adott játék lobby-ja, játékos adatai, lobby adatai, csapatválasztás, chat, start game gomb, ready gomb, cancel gomb
 -lobbies.html - az aktív lobby-k listázása táblázat, join gomb
+-lobbyeditnew.html - új lobby létrehozása/szerkesztése, save és cancel gomb
 -uploadedit.html - fájl feltöltése/szerkesztése form, cancel
 -profile.html - edit gomb, játékos játékainak listázása gomb
 -users.html - táblázat, profil megtekintése, játékok gomb
@@ -15,40 +16,158 @@ Játékosok és játékok
 
 Routing
 
-GET /                               - index.html
-GET /users                          - users.html
-GET /users/:userid                  - profile.html
+*GET /          - index.html
 
-GET /users/edit/:userid             - profile.html
-POST /users/edit/:userid
+*GET /users
+    authMW
+    getUsersMW
+    renderMW(users.html)
 
-GET /users/:userid/games            - usersgames.html
-GET /games                          - games.html
-GET /games/:gameid                  - game.html
+*GET /users/:userid
+    authMW
+    getUserMW
+    renderMW(profile.html)
 
-GET /games/edit/:gameid             - uploadedit.html
-POST /games/edit/:gameid
-GET /games/del/:gameid
+*GET, POST /users/new
+    authMW
+    saveUserMW
+        if (typeof req.body.name == 'undefined'){
+            return next();
+        }
+        // ha sikerült a mentés, akkor
+        res.redirect('/users/:userid');
+        // ha nem sikerült
+        res.locals
+        next();
 
-GET /games/:gameid/owner            - profile.html
-GET /games/:userid                  - usersgames.html
+        if (typeof res.locals.user === 'undefined'){
+            res.locals.user = new User();
+        }
 
-GET /games/new                      - uploadedit.html
-POST /games/new                     - játék hozzáadása
+    renderMW(signupedit.html (new))
+        - ha volt valami beküldve, akkor az ott marad a formban
+        - ha nem, akkor nem
 
-GET /chat                           - chat.html
-POST /chat
+*GET, POST /users/edit/:userid
+    authMW
+    getUserMW (paraméterből) ha nincs ilyen, átírányítás máshova
+    saveUserMW
+    renderMW (signupedit.html (edit))
 
-GET /login                          - login.html
-POST /login                         - jelszó ellenőrzés, ha ok, redirect a játékokra, ha nem, vissza a login screenre
+*GET /users/del/:userid
+    authMW
+    getUserMW
+        db("...", function(result){
+            if (result.length===0){
+                return res.redirect('/users/:userid');
+            }
+            res.locals.user = result[0];
+            next();
+        })
+    getGamesMW
+    delGameMW
+        res.locals.games.delete();
+        res.redirect('/');
 
-GET /signup                         - signup.html
-POST /signup
+*GET /users/:userid/games
+    authMW
+    getUserMW
+    getGamesMW
+    renderMW (usersgames.html)
 
-GET /lobbies                        - lobbies.html
-GET /lobbies/:lobbyid               - lobby.html
+*GET /games
+    getGamesMW
+    renderMW (games.html)
 
-GET /lobbies/edit/:lobbyid          - lobby.html
-POST /lobbies/edit/:lobbyid
+*GET, POST /games/new
+    authMW
+    saveGameMW
+            if (typeof req.body.name == 'undefined'){
+                return next();
+            }
+            // ha sikerült a mentés, akkor
+            res.redirect('/games/:gameid');
+            // ha nem sikerült
+            res.locals
+            next();
 
-GET /lobbies/:gameid                - lobbies.html (rászűrve a játékra)
+    renderMW(uploadedit.html (new))
+        - ha volt valami beküldve, akkor az ott marad a formban
+        - ha nem, akkor nem
+
+
+*GET /games/:gameid
+    authMW
+    getGameMW
+    renderMW (game.html)
+
+*GET, POST /games/edit/:gameid
+    authMW
+    getGameMW (paraméterből) ha nincs ilyen, átírányítás máshova
+    saveGameMW
+    renderMW (uploadedit.html (edit))
+
+*GET /games/del/:gameid
+    authMW
+    getGameMW
+        db("...", function(result){
+            if (result.length===0){
+                return res.redirect('/games');
+            }
+            res.locals.games = result[0];
+            next();
+        })
+    delGameMW
+        res.locals.games.delete();
+        res.redirect('/games');
+
+*GET /chat                           - chat.html
+    authMW
+    TODO: friend requestek hozzáadása és lekezelése (kell-e?)
+    getActiveUsersMW
+    renderMW(chat.html)
+
+*POST /chat
+    authMW
+    sendMsgMW
+    renderMW(chat.html)
+
+*GET /
+    renderMW (index.html)
+
+*GET, POST /login             - jelszó ellenőrzés, ha ok, redirect a játékokra, ha nem, vissza a login screenre
+    checkUserCredentialsMW
+    renderMW(login.html)
+
+*GET /lobbies
+    authMW
+    getLobbiesMW
+    renderMW (lobbies.html)
+
+*GET,POST /lobbies/new
+    authMW
+    getGameMW
+    getUserMW (kell-e?)
+    saveLobbyMW
+        if (typeof req.body.name == 'undefined'){
+            return next();
+        }
+            // ha sikerült a mentés, akkor
+            res.redirect('/lobbies/:lobbyid');
+            // ha nem sikerült
+            res.locals
+            next();
+    renderMW (lobbyeditnew.html (new) pár adatot már be tud írni: hoszt neve, játék neve)
+
+*GET /lobbies/:lobbyid
+    authMW
+    getLobbyMW
+    renderMW (lobby.html)
+
+*GET, POST /lobbies/edit/:lobbyid
+    authMW
+    getLobbyMW (paraméterből) ha nincs ilyen, átírányítás máshova
+    saveLobbyMW
+    renderMW (lobbyeditnew.html (edit))
+
+getGamesMW és getGameMW azonos-e? hasonlóan a getUserMW és a getUsersMW, getLobbyMW és getLobbiesMW

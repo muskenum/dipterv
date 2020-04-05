@@ -1,12 +1,15 @@
-let express = require('express');
-let app = express();
-let helmet = require('helmet');
+const express = require('express');
+const app = express();
+const helmet = require('helmet');
+
+// Including all the routes
+//require('./routes/index')(app);
 
 app.use(helmet());
 
 app.use(express.static('static'));
 
 const port = 3000;
-let server = app.listen(port, (req, res) => {
+const server = app.listen(port, (req, res) => {
     console.log(`Listening on ${port}`);
 });
