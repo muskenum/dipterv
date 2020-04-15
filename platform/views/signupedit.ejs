@@ -1,0 +1,47 @@
+<%- include ('templates/header') -%>
+<%- include ('templates/navbar_min') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-3 col-md-3 col-12"></div>
+        <div class="col-xl-6 col-md-6 col-12">
+            <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h1>Sign up OR Modify your data</h1>
+                <p class="lead">Please provide your data to continue</p>
+            </div>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="youraddress@email.com"
+                               required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputName">Name</label>
+                        <input type="text" id="inputName" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputUserName">Username</label>
+                        <input type="text" id="inputUserName" class="form-control" placeholder="hunterkiller99"
+                               required>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="inputCountry">Country</label>
+
+                        <%- include ('templates/countries_select') -%>
+
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Sign up"/>
+                <a class="btn btn-link" href="/">Cancel</a>
+            </form>
+        </div>
+        <div class="col-xl-4 col-md-4 col-12"></div>
+    </div>
+</div>
+
+<%- include ('templates/footer') -%>

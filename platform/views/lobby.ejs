@@ -1,0 +1,72 @@
+<%- include ('templates/header') -%>
+<%- include ('templates/navbar_full') -%>
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <table class="table table-borderless">
+                    <tr>
+                        <th>Name:</th>
+                        <td>HunterKiller99</td>
+                    </tr>
+                    <tr>
+                        <th class="align-middle">Team:</th>
+                        <td>
+                            <button class="btn btn-link btn-sm btn-outline-primary">Blue</button>
+                            <button class="btn btn-sm btn-danger">Red</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row border bg-dark" style="height: 200px">
+            </div>
+            <div class="row">
+                <form class="form-group" style="width: 100%">
+                    <div class="form-group">
+                        <button class="btn btn-primary form-control float-right" style="width: 10%">Send</button>
+                        <input class="form-control" id="message" placeholder="Send a message..." autocomplete="off"
+                               style="width: 89%"/>
+                    </div>
+                </form>
+            </div>
+            <div class="align-middle custom-control custom-checkbox checkbox-xl">
+                <input type="checkbox" class="custom-control-input" id="readyCheckbox">
+                <label class="custom-control-label" for="readyCheckbox">I'm ready!</label>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <a href="#" class="btn btn-primary btn-block">Start Game</a>
+                </div>
+                <div class="col-6">
+                    <a href="/lobbies" class="btn btn-outline-primary btn-block">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Game:</th>
+                    <td>jatek neve</td>
+                </tr>
+                <tr>
+                    <th>Players:</th>
+                    <td>69/420</td>
+                </tr>
+                <tr>
+                    <th>Host:</th>
+                    <td>malacka</td>
+                </tr>
+                <tr>
+                   <td colspan="2">
+                       <a href="/lobbies/edit/:lobbyid" class="btn btn-block btn-secondary">Lobby Settings <i class="fas fa-cog"></i></a>
+                   </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<%- include ('templates/footer') -%>

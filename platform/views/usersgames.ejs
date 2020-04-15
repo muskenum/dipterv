@@ -1,0 +1,48 @@
+<%- include ('templates/header') -%>
+<%- include ('templates/navbar_full') -%>
+
+<br>
+<div class="container">
+    <a href="/users/:userid" class="btn btn-outline-primary float-right">Go back</a>
+    <h2>Kim Jong-un's uploaded games</h2>
+    <table class="table table-bordered text-justify">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td><a href="/games/:gameid">Age&nbsp;of&nbsp;Empires&nbsp;II</a></td>
+            <td>Starting from 1999, and still going stronk, the best strategy game in the universe. Lorem ipsum dolor
+                sit amet, consectetur adipiscing elit. Suspendisse in ultrices nunc. Mauris sed blandit tellus, sit amet
+                feugiat diam. Phasellus in felis tristique, ullamcorper velit nec, porta nunc. Vestibulum a sem mattis,
+                sagittis est id, facilisis leo. Maecenas auctor nisl non purus hendrerit consectetur. Nunc porta, elit
+                eu suscipit malesuada, enim quam faucibus turpis, in lacinia tortor urna nec urna. Nunc accumsan congue
+                est, non accumsan eros dictum non. Nullam malesuada non lorem at cursus.
+            </td>
+            <td>
+                <a href="/lobbies/new" class="btn btn-block btn-success">Play <i class="fas fa-gamepad"></i></a>
+                <a href="/games/edit/:gameid" class="btn btn-block btn-primary">Edit <i class="fas fa-edit"></i></a>
+                <a href="/games/del/:gameid" class="btn btn-block btn-danger">Delete <i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="/games/:gameid">Call&nbsp;of&nbsp;Duty&nbsp;2</a></td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in ultrices nunc. Mauris sed
+                blandit tellus, sit amet feugiat diam. Phasellus in felis tristique, ullamcorper velit nec, porta nunc.
+                Vestibulum a sem mattis, sagittis est id, facilisis leo. Maecenas auctor nisl non purus hendrerit
+                consectetur. Nunc porta, elit eu suscipit malesuada, enim quam faucibus turpis, in lacinia tortor urna
+                nec urna. Nunc accumsan congue est, non accumsan eros dictum non. Nullam malesuada non lorem at cursus.
+            </td>
+            <td>
+                <a href="/lobbies/new" class="btn btn-block btn-success">Play <i class="fas fa-gamepad"></i></a>
+                <a href="/games/edit/:gameid" class="btn btn-block btn-primary">Edit <i class="fas fa-edit"></i></a>
+                <a href="/games/del/:gameid" class="btn btn-block btn-danger">Delete <i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<%- include ('templates/footer_extra') -%>

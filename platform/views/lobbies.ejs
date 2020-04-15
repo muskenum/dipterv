@@ -1,0 +1,40 @@
+<%- include ('templates/header') -%>
+<%- include ('templates/navbar_full') -%>
+
+<br>
+<div class="container">
+    <div>
+        <a href="/lobbies/new" class="btn btn-primary float-right">New lobby</a>
+        <h2>List of active lobbies</h2>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Game</th>
+                <th>Players</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr >
+                <td class="align-middle">Jancsi játéka</td>
+                <td class="align-middle"><a href="/games/:gameid">AOE 2</a></td>
+                <td class="align-middle">69/420</td>
+                <td><a href="/lobbies/:lobbyid" class="btn btn-block btn-primary">Join <i class="fas fa-sign-in-alt"></i></a></td>
+            </tr>
+            <tr>
+                <td class="align-middle">Ádám játéka</td>
+                <td class="align-middle"><a href="/games/:gameid">EU4</a></td>
+                <td class="align-middle">69/420</td>
+                <td><a href="/lobbies/:lobbyid" class="btn btn-block btn-primary">Join <i class="fas fa-sign-in-alt"></i></a></td>
+            </tr>
+            <tr>
+                <td class="align-middle">Béla játéka</td>
+                <td class="align-middle"><a href="/games/:gameid">CS:GO</a></td>
+                <td class="align-middle">69/420</td>
+                <td><a href="/lobbies/:lobbyid" class="btn btn-block btn-primary">Join <i class="fas fa-sign-in-alt"></i></a></td>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<%- include ('templates/footer_extra') -%>

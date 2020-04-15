@@ -1,0 +1,15 @@
+<%- include ('templates/header') -%>
+<%- include ('templates/navbar_full') -%>
+
+<br>
+<div class="container">
+    <h2>Tank Game To Play</h2>
+    <h5>Uploaded: <a href="/users/:userid">Misimókus</a></h5>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et urna et ex dapibus fermentum eu eu orci. Maecenas dui diam, dictum et congue eu, malesuada vitae elit. Pellentesque commodo lectus sed vestibulum cursus. Suspendisse potenti. Suspendisse sit amet urna massa. Fusce nec nisi aliquet, vehicula lectus eget, aliquam velit. Curabitur pharetra facilisis nulla sit amet euismod. Praesent et turpis nisl. Fusce vestibulum quis mi in fermentum. Aliquam id lacus libero. Nullam cursus ac tellus et tristique. Mauris at sapien et metus commodo venenatis. Nunc pellentesque turpis at tincidunt molestie. Maecenas finibus, felis et lobortis bibendum, dolor nisl aliquam tortor, eget cursus turpis est id ex. Nunc id ipsum non sem ullamcorper maximus non in orci. Nunc molestie tortor dui, vel dictum augue pellentesque pellentesque. </p>
+    <a href="/lobbies/new" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
+    <a href="/lobbies" class="btn btn-secondary">Lobbies <i class="fas fa-list"></i></a>
+    <a href="/games/edit/:gameid" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+    <a href="/games" class="btn btn-danger">Delete <i class="fas fa-trash"></i></a>
+</div>
+
+<%- include ('templates/footer') -%>

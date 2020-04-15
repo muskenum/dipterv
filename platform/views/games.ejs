@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Games</title>
-    <script src="https://kit.fontawesome.com/b07d10fe4f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="UTF-8">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-        <a class="navbar-brand" href="/">Muskenum Games</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-    </div>
-</nav>
+<%- include ('templates/header') -%>
+<%- include ('templates/navbar_min') -%>
+
 <section class="jumbotron text-center">
     <div class="container">
         <h1>Explore our games!</h1>
@@ -25,8 +8,8 @@
             players and form a team! There is only one rule: always have fun, be respectful and never rage! Sign up, if
             you are interested in making your own games, or log in if you already have an account.</p>
         <p>
-            <a href="login.html" class="btn btn-primary my-2">Log in</a>
-            <a href="signupedit.html" role="button" class="btn my-2 btn-outline-primary">Sign up</a>
+            <a href="/login" class="btn btn-primary my-2">Log in</a>
+            <a href="/users/new" role="button" class="btn my-2 btn-outline-primary">Sign up</a>
         </p>
     </div>
 </section>
@@ -35,15 +18,15 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <img src="images/games_game_mb.jpg" style="width: 100%">
+                    <img src="/images/games_game_mb.jpg" style="width: 100%">
                     </svg>
                     <div class="card-body">
                         <h3>Mount & Blade</h3>
                         <p>Fantastic game of TaleWorlds Entertainment</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="game.html" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
-                                <a href="lobbyeditnew.html" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
+                                <a href="/games/:gameid" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
+                                <a href="/lobbies/new" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>
@@ -63,8 +46,8 @@
                             additional content. This content is a little bit longer.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="/game.html" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
-                                <a href="/lobbyeditnew.html" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
+                                <a href="/games/:gameid" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
+                                <a href="/lobbies/new" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>
@@ -84,8 +67,8 @@
                             additional content. This content is a little bit longer.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="/game.html" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
-                                <a href="/lobbyeditnew.html" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
+                                <a href="/games/:gameid" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
+                                <a href="/lobbies/new" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>
@@ -106,8 +89,8 @@
                             additional content. This content is a little bit longer.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="/game.html" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
-                                <a href="/lobbyeditnew.html" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
+                                <a href="/games/:gameid" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
+                                <a href="/lobbies/new" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>
@@ -127,8 +110,8 @@
                             additional content. This content is a little bit longer.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="/game.html" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
-                                <a href="/lobbyeditnew.html" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
+                                <a href="/games/:gameid" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
+                                <a href="/lobbies/new" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>
@@ -148,8 +131,8 @@
                             additional content. This content is a little bit longer.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="/game.html" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
-                                <a href="/lobbyeditnew.html" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
+                                <a href="/games/:gameid" type="button" class="btn btn-primary">View <i class="fas fa-eye"></i></a>
+                                <a href="/lobbies/new" type="button" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>
@@ -159,25 +142,5 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="container">
-            <a class="float-right" href="#">Back to top</a>
-        </div>
-        <div class="container text-muted">
-            Muskenum Games
-            <small class="d-block mb-3">&copy; 2020</small>
-        </div>
-    </footer>
-</div>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+
+<%- include ('templates/footer_extra') -%>

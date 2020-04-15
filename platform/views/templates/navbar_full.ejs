@@ -8,36 +8,35 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/games.html">Games</a>
+                    <a class="nav-link" href="/games">Games</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="uploadedit.html">Upload</a>
+                    <a class="nav-link" href="/games/new">Upload</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="chat.html">Chat</a>
+                    <a class="nav-link" href="/chat">Chat</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="lobbies.html">Lobbies</a>
+                    <a class="nav-link" href="/lobbies">Lobbies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="users.html">Users</a>
+                    <a class="nav-link" href="/users">Users</a>
                 </li>
             </ul>
         </div>
         <div class="btn-group">
-            <a class="btn btn-primary btn-outline-light" href="profile.html">Account</a>
+            <a class="btn btn-primary btn-outline-light" href="/users/:userid">Account</a>
             <button type="button" class="btn btn-primary  btn-outline-light dropdown-toggle dropdown-toggle-split"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.html">Profile settings</a>
-                <a class="dropdown-item" href="usersgames.html">My games</a>
-                <a class="dropdown-item" href="index.html">Delete account</a>
+                <a class="dropdown-item" href="/users/edit/:userid">Profile settings</a>
+                <a class="dropdown-item" href="/users/:userid/games">My games</a>
+                <a class="dropdown-item" href="/">Delete account</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/">Log out</a>
             </div>
         </div>
     </div>
 </nav>
-<br>

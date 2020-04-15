@@ -11,4 +11,4 @@ const requireOption = (objectRepository, propertyName) => {
     throw new TypeError(propertyName + ' required');
 };
 
-module.exports = requireOption();
+module.exports = requireOption;

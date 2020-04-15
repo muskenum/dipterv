@@ -20,8 +20,16 @@ const getUserMW = require('../middlewares/user/getUserMW');
 const getUsersMW = require('../middlewares/user/getUsersMW');
 const saveUserMW = require('../middlewares/user/saveUserMW');
 
+const UserModel = require('../models/user');
+const GameModel = require('../models/game');
+const LobbyModel = require('../models/lobby');
+
 module.exports = function (app) {
-    const objectrepository = {};
+    const objectrepository = {
+        UserModel: UserModel,
+        GameModel: GameModel,
+        LobbyModel: LobbyModel
+    };
 
     app.get(
         '/users',
@@ -29,17 +37,17 @@ module.exports = function (app) {
         getUsersMW(objectrepository),
         renderMW(objectrepository, 'users')
     );
-    app.get(
-        '/users/:userid',
-        authMW(objectrepository),
-        getUserMW(objectrepository),
-        renderMW(objectrepository, 'profile')
-    );
     app.use(
         '/users/new',
         authMW(objectrepository),
         saveUserMW(objectrepository),
         renderMW(objectrepository, 'signupedit')
+    );
+    app.get(
+        '/users/:userid',
+        authMW(objectrepository),
+        getUserMW(objectrepository),
+        renderMW(objectrepository, 'profile')
     );
     app.use(
         '/users/edit/:userid',
@@ -91,14 +99,15 @@ module.exports = function (app) {
         '/games/del/:gameid',
         authMW(objectrepository),
         getGameMW(objectrepository),
-        delGameMW(objectrepository)
+        delGameMW(objectrepository),
+        renderMW(objectrepository, 'usersgames')
     );
     app.use(
         '/chat',
         authMW(objectrepository),
         getActiveUsersMW(objectrepository),
         sendMsgMW(objectrepository),
-        renderMW(objectrepository, 'chat')
+        renderMW(objectrepository, 'chat', {pageTitle: 'Chat'})
     );
     app.use(
         '/login',
@@ -117,13 +126,13 @@ module.exports = function (app) {
         authMW(objectrepository),
         getGameMW(objectrepository),
         getUserMW(objectrepository),
-        saveLobby(objectrepository),
+        saveLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobbyeditnew')
     );
     app.get(
         '/lobbies/:lobbyid',
         authMW(objectrepository),
-        getLobby(objectrepository),
+        getLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobby')
     );
     app.use(
@@ -132,6 +141,11 @@ module.exports = function (app) {
         getLobbyMW(objectrepository),
         saveLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobbyeditnew')
+    );
+
+    app.get(
+        '/',
+        renderMW(objectrepository, 'index')
     );
 };
 
