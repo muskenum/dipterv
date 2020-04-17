@@ -49,6 +49,13 @@ module.exports = function (app) {
         getUserMW(objectrepository),
         renderMW(objectrepository, 'profile')
     );
+    app.get(
+        '/users/:userid/games',
+        authMW(objectrepository),
+        getUserMW(objectrepository),
+        getGamesMW(objectrepository),
+        renderMW(objectrepository, 'usersgames')
+    );
     app.use(
         '/users/edit/:userid',
         authMW(objectrepository),
@@ -62,14 +69,8 @@ module.exports = function (app) {
         getUserMW(objectrepository),
         getGamesMW(objectrepository),
         delGameMW(objectrepository),
-        delUserMW(objectrepository)
-    );
-    app.get(
-        '/users/:userid/games',
-        authMW(objectrepository),
-        getUserMW(objectrepository),
-        getGamesMW(objectrepository),
-        renderMW(objectrepository, 'usersgames')
+        delUserMW(objectrepository),
+        renderMW(objectrepository, 'index')
     );
     app.get(
         '/games',
@@ -107,7 +108,7 @@ module.exports = function (app) {
         authMW(objectrepository),
         getActiveUsersMW(objectrepository),
         sendMsgMW(objectrepository),
-        renderMW(objectrepository, 'chat', {pageTitle: 'Chat'})
+        renderMW(objectrepository, 'chat')
     );
     app.use(
         '/login',
@@ -124,7 +125,7 @@ module.exports = function (app) {
     app.use(
         '/lobbies/new',
         authMW(objectrepository),
-        getGameMW(objectrepository),
+        getGamesMW(objectrepository),
         getUserMW(objectrepository),
         saveLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobbyeditnew')
@@ -132,6 +133,7 @@ module.exports = function (app) {
     app.get(
         '/lobbies/:lobbyid',
         authMW(objectrepository),
+        getUserMW(objectrepository),
         getLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobby')
     );
@@ -139,6 +141,7 @@ module.exports = function (app) {
         '/lobbies/edit/:lobbyid',
         authMW(objectrepository),
         getLobbyMW(objectrepository),
+        getGamesMW(objectrepository),
         saveLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobbyeditnew')
     );

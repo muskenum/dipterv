@@ -7,52 +7,17 @@
         <div class="col-xl-4 col-md-4" data-s>
             <table class="table table-bordered">
                 <thead class="thead-dark">
-                    <tr>
-                        <th colspan="2">Friends</th>
-                    </tr>
+                <tr>
+                    <th colspan="2">Friends</th>
+                </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row"><a href="/users/:userid">Jószi</a></th>
-                    <td>1234567</td>
-                </tr>
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
-
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
-                <tr>
-                    <th scope="row">Béla</th>
-                    <td>1234567</td>
-                </tr>
+                <% users.forEach((oneUser)=>{ %>
+                    <tr>
+                        <th scope="row"><a href="/users/<%= oneUser._userID %>"><%= oneUser.Name %></a></th>
+                        <td><%= oneUser.UserName %></td>
+                    </tr>
+                <% }); %>
                 </tbody>
             </table>
         </div>

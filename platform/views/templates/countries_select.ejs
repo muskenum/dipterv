@@ -1,4 +1,10 @@
-<select id="inputCountry" name="country" class="form-control">
+<select id="Country" name="Country" class="form-control">
+    <% if (typeof user === 'undefined') { %>
+    <option value="none" selected disabled hidden>Select your country</option>
+    <% } else { %>
+        <option value="<%= user.Country %>" selected>
+            <%= user.Country %></option>
+    <% } %>
     <option value="Afghanistan">Afghanistan</option>
     <option value="Åland Islands">Åland Islands</option>
     <option value="Albania">Albania</option>

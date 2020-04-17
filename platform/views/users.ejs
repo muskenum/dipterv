@@ -12,33 +12,25 @@
             <th>Country</th>
             <th>&nbsp;</th>
         </tr>
-        <tr >
-            <td class="align-middle">egyeske</td>
-            <td class="align-middle">username1</td>
-            <td class="align-middle">userCountry1</td>
-            <td>
-                <a href="/users/:userid" class="btn btn-primary">Profile <i class="fas fa-user-circle"></i></a>
-                <a href="/users/:userid/games" class="btn btn-success">User's games <i class="fas fa-gamepad"></i></a>
-            </td>
-        </tr>
-        <tr>
-            <td class="align-middle">userName</td>
-            <td class="align-middle">userUserNam</td>
-            <td class="align-middle">userCountry</td>
-            <td>
-                <a href="/users/:userid" class="btn btn-primary">Profile <i class="fas fa-user-circle"></i></a>
-                <a href="/users/:userid/games" class="btn btn-success">User's games <i class="fas fa-gamepad"></i></a>
-            </td>
-        </tr>
-        <tr>
-            <td class="align-middle">userName</td>
-            <td class="align-middle">userUserName</td>
-            <td class="align-middle">userCountry</td>
-            <td>
-                <a href="/users/:userid" class="btn btn-primary">Profile <i class="fas fa-user-circle"></i></a>
-                <a href="/users/:userid/games" class="btn btn-success">User's games <i class="fas fa-gamepad"></i></a>
-            </td>
-        </tr>
+        <% users.forEach(function (oneUser) { %>
+            <tr>
+                <td class="align-middle">
+                    <%= oneUser.Name %>
+                </td>
+                <td class="align-middle">
+                    <%= oneUser.UserName %>
+                </td>
+                <td class="align-middle">
+                    <%= oneUser.Country %>
+                </td>
+                <td>
+                    <a href="/users/<%= oneUser._userID %>" class="btn btn-primary">Profile <i
+                                class="fas fa-user-circle"></i></a>
+                    <a href="/users/<%= oneUser._userID %>/games" class="btn btn-success">User's games <i
+                                class="fas fa-gamepad"></i></a>
+                </td>
+            </tr>
+        <% }); %>
         </thead>
     </table>
 </div>

@@ -3,13 +3,14 @@
 
 <div class="container">
     <br>
+    <h2><%=lobby.Name%></h2>
     <div class="row">
         <div class="col-6">
             <div class="row">
                 <table class="table table-borderless">
                     <tr>
                         <th>Name:</th>
-                        <td>HunterKiller99</td>
+                        <td><%= user.UserName %></td>
                     </tr>
                     <tr>
                         <th class="align-middle">Team:</th>
@@ -48,20 +49,21 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Game:</th>
-                    <td>jatek neve</td>
+                    <td><%= lobby._Game %></td>
                 </tr>
                 <tr>
                     <th>Players:</th>
-                    <td>69/420</td>
+                    <td><%= lobby.Size %>/<%= lobby.Capacity %></td>
                 </tr>
                 <tr>
                     <th>Host:</th>
-                    <td>malacka</td>
+                    <td><%=lobby._Creator%></td>
                 </tr>
                 <tr>
-                   <td colspan="2">
-                       <a href="/lobbies/edit/:lobbyid" class="btn btn-block btn-secondary">Lobby Settings <i class="fas fa-cog"></i></a>
-                   </td>
+                    <td colspan="2">
+                        <a href="/lobbies/edit/<%= lobby._lobbyID%>" class="btn btn-block btn-secondary">Lobby Settings <i
+                                    class="fas fa-cog"></i></a>
+                    </td>
                 </tr>
             </table>
 

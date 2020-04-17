@@ -9,30 +9,21 @@
     </div>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Game</th>
+            <th>Players</th>
+            <th>&nbsp;</th>
+        </tr>
+        <% lobbies.forEach((oneLobby)=>{ %>
             <tr>
-                <th>Name</th>
-                <th>Game</th>
-                <th>Players</th>
-                <th>&nbsp;</th>
+                <td class="align-middle"><%= oneLobby.Name %></td>
+                <td class="align-middle"><a href="/games/<%= oneLobby._Game %>"><%= oneLobby._Game %></a></td>
+                <td class="align-middle">69/<%= oneLobby.Size %></td>
+                <td><a href="/lobbies/<%= oneLobby._lobbyID %>" class="btn btn-block btn-primary">Join <i
+                                class="fas fa-sign-in-alt"></i></a></td>
             </tr>
-            <tr >
-                <td class="align-middle">Jancsi játéka</td>
-                <td class="align-middle"><a href="/games/:gameid">AOE 2</a></td>
-                <td class="align-middle">69/420</td>
-                <td><a href="/lobbies/:lobbyid" class="btn btn-block btn-primary">Join <i class="fas fa-sign-in-alt"></i></a></td>
-            </tr>
-            <tr>
-                <td class="align-middle">Ádám játéka</td>
-                <td class="align-middle"><a href="/games/:gameid">EU4</a></td>
-                <td class="align-middle">69/420</td>
-                <td><a href="/lobbies/:lobbyid" class="btn btn-block btn-primary">Join <i class="fas fa-sign-in-alt"></i></a></td>
-            </tr>
-            <tr>
-                <td class="align-middle">Béla játéka</td>
-                <td class="align-middle"><a href="/games/:gameid">CS:GO</a></td>
-                <td class="align-middle">69/420</td>
-                <td><a href="/lobbies/:lobbyid" class="btn btn-block btn-primary">Join <i class="fas fa-sign-in-alt"></i></a></td>
-            </tr>
+        <% }); %>
         </thead>
     </table>
 </div>
