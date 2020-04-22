@@ -1,29 +1,28 @@
+/**
+ * Gets all games from the database and puts them on res.locals.games.
+ * If there is an user specified, then gets only that user's games.
+ */
 const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {
+    const GameModel = requireOption(objectRepository, 'GameModel');
     return function (req, res, next) {
-        res.locals.games = [
-            {
-                _gameID: "id1",
-                Name: "AOE2",
-                Desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                File: "alma",
-                _Owner: {
-                    type: "dsgfsdgf",
-                    ref: 'User'
+        if (typeof res.locals.user === 'undefined') {
+            GameModel.find({}, (err, games) => {
+                if (err) {
+                    return next(err);
                 }
-            },
-            {
-                _gameID: "id2",
-                Name: "M&B Warband",
-                Desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                File: "alma",
-                _Owner: {
-                    type: "assadf",
-                    ref: 'User'
+                res.locals.games = games;
+                return next();
+            });
+        } else {
+            GameModel.find({_owner: res.locals.user._id}, (err, games) => {
+                if (err) {
+                    return next(err);
                 }
-            }
-        ];
-        next();
+                res.locals.games = games;
+                return next();
+            });
+        }
     };
 };

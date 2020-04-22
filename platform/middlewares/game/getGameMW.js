@@ -1,17 +1,19 @@
+/**
+ * Gets one game from the database using the :gameid parameter.
+ * Saves the result to res.locals.game.
+ */
+
 const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {
+    const GameModel = requireOption(objectRepository, 'GameModel');
     return function (req, res, next) {
-        res.locals.game= {
-            _gameID: "id1",
-            Name: "HoI2",
-            Desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            File: "game.zip",
-            _Owner: {
-                type: "gameowner",
-                ref: 'User'
+        GameModel.findOne({_id: req.params.gameid}, (err, game) => {
+            if (err || !game) {
+                return next(err);
             }
-        };
-        return next();
+            res.locals.game = game;
+            return next();
+        });
     };
 };

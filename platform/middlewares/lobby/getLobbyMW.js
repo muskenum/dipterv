@@ -1,21 +1,18 @@
+/**
+ * Gets one lobby from the database using the :lobbyid parameter.
+ * Saves the result to res.locals.lobby.
+ */
 const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {
+    const LobbyModel = requireOption(objectRepository, 'LobbyModel');
     return function (req, res, next) {
-        res.locals.lobby = {
-            _lobbyID: "id1",
-            Name: "OnlyNoobs",
-            Capacity: 42,
-            Size: 17,
-            _Creator: {
-                type: "LobbyCreator1",
-                ref: 'User'
-            },
-            _Game: {
-                type: "lobbyGame1",
-                ref: 'Game'
+        LobbyModel.findOne({_id: req.params.lobbyid}, (err, lobby) => {
+            if (err || !lobby) {
+                next(err);
             }
-        };
-        return next();
+            res.locals.lobby = lobby;
+            return next();
+        });
     };
 };

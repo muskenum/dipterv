@@ -14,8 +14,8 @@
                 <tbody>
                 <% users.forEach((oneUser)=>{ %>
                     <tr>
-                        <th scope="row"><a href="/users/<%= oneUser._userID %>"><%= oneUser.Name %></a></th>
-                        <td><%= oneUser.UserName %></td>
+                        <th scope="row"><a href="/users/<%= oneUser._id %>"><%= oneUser.name %></a></th>
+                        <td><%= oneUser.username %></td>
                     </tr>
                 <% }); %>
                 </tbody>

@@ -16,36 +16,36 @@
                 <% } %>
             </div>
             <form method="post">
-                <input type="hidden" name="_userID" value="<%= (typeof user === 'undefined') ? '' : user._userID %>"/>
+                <input type="hidden" name="_id" value="<%= (typeof user === 'undefined') ? '' : user._id %>"/>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="Mail">Email</label>
-                        <input type="email" class="form-control" id="Mail" name="Mail"
-                               value="<%= (typeof user === 'undefined') ? '' : user.Mail %>"
+                        <label for="mail">Email</label>
+                        <input type="email" class="form-control" id="mail" name="mail"
+                               value="<%= (typeof user === 'undefined') ? '' : user.mail %>"
                                placeholder="youraddress@email.com"
                                required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="Pass">Password</label>
-                        <input type="password" class="form-control" id="Pass" name="Pass"
-                               value="<%= (typeof user === 'undefined') ? '' : user.Pass %>" placeholder="Password"
+                        <label for="pass">Password</label>
+                        <input type="password" class="form-control" id="pass" name="pass"
+                               value="<%= (typeof user === 'undefined') ? '' : user.pass %>" placeholder="Password"
                                required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="Name">Name</label>
-                        <input type="text" class="form-control" id="Name" name="Name"
-                               value="<%= (typeof user === 'undefined') ? '' : user.Name %>" placeholder="John Doe"
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                               value="<%= (typeof user === 'undefined') ? '' : user.name %>" placeholder="John Doe"
                                required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="UserName">Username</label>
-                        <input type="text" class="form-control" id="UserName" name="UserName"
-                               value="<%= (typeof user === 'undefined') ? '' : user.UserName %>"
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               value="<%= (typeof user === 'undefined') ? '' : user.username %>"
                                placeholder="hunterkiller99"
                                required>
                     </div>
                     <div class="form-group col-12">
-                        <label for="Country">Country</label>
+                        <label for="country">Country</label>
 
                         <%- include ('templates/countries_select') -%>
 
@@ -53,7 +53,8 @@
                 </div>
                 <input type="submit" class="btn btn-primary"
                        value="<% if (typeof user === 'undefined') { %>Sign up<% }else{ %>Save<% } %>"/>
-                <a class="btn btn-link" href="/">Cancel</a>
+                <a class="btn btn-link"
+                   href="<%= (typeof user === 'undefined') ? '/' : '/users/' + user._id %>">Cancel</a>
             </form>
         </div>
         <div class="col-xl-4 col-md-4 col-12"></div>

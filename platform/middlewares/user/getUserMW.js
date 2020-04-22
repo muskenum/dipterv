@@ -1,15 +1,18 @@
+/**
+ * Gets one user from the database using the :userid parameter.
+ * Saves the result to res.locals.user.
+ */
 const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {
+    const UserModel = requireOption(objectRepository, 'UserModel');
     return function (req, res, next) {
-        res.locals.user = {
-            _userID: "id1",
-            Name: "Kim Jong-un",
-            UserName: "NukeEmAll",
-            Mail: "kim@dprk.kr",
-            Pass: "alma",
-            Country: "Demo Rep Kr"
-        };
-        return next();
+        UserModel.findOne({_id: req.params.userid}, (err, user) => {
+            if (err || !user) {
+                next(err);
+            }
+            res.locals.user = user;
+            return next();
+        });
     };
 };

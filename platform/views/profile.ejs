@@ -3,19 +3,19 @@
 
 <br>
 <div class="container">
-    <h2><%= user.UserName %></h2>
+    <h2><%= user.username %></h2>
     <table class="table table-bordered">
         <tr>
             <th>Name:</th>
-            <td><%= user.Name %></td>
+            <td><%= user.name %></td>
         </tr>
         <tr>
             <th>Country:</th>
-            <td><%= user.Country %></td>
+            <td><%= user.country %></td>
         </tr>
     </table>
-    <a href="/users/<%= user._userID %>/games" class="btn btn-success">User's games <i class="fas fa-gamepad"></i></a>
-    <a href="/users/edit/<%= user._userID %>" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+    <a href="/users/<%= user._id %>/games" class="btn btn-success">User's games <i class="fas fa-gamepad"></i></a>
+    <a href="/users/edit/<%= user._id %>" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 </div>
 
 <%- include ('templates/footer') -%>

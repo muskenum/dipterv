@@ -2,15 +2,14 @@ const Schema = require('mongoose').Schema;
 const db = require('../config/db');
 
 const Lobby = db.model('Lobby', {
-    _lobbyID: String,
-    Name: String,
-    Capacity: Number,
-    Size: Number,
-    _Creator: {
+    name: String,
+    capacity: Number,
+    size: Number,
+    _creator: {
         type: Schema.Types.ObjectID,
         ref: 'User'
     },
-    _Game: {
+    _game: {
         type: Schema.Types.ObjectID,
         ref: 'Game'
     }

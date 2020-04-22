@@ -15,18 +15,18 @@
         <% users.forEach(function (oneUser) { %>
             <tr>
                 <td class="align-middle">
-                    <%= oneUser.Name %>
+                    <%= oneUser.name %>
                 </td>
                 <td class="align-middle">
-                    <%= oneUser.UserName %>
+                    <%= oneUser.username %>
                 </td>
                 <td class="align-middle">
-                    <%= oneUser.Country %>
+                    <%= oneUser.country %>
                 </td>
                 <td>
-                    <a href="/users/<%= oneUser._userID %>" class="btn btn-primary">Profile <i
+                    <a href="/users/<%= oneUser._id %>" class="btn btn-primary">Profile <i
                                 class="fas fa-user-circle"></i></a>
-                    <a href="/users/<%= oneUser._userID %>/games" class="btn btn-success">User's games <i
+                    <a href="/users/<%= oneUser._id %>/games" class="btn btn-success">User's games <i
                                 class="fas fa-gamepad"></i></a>
                 </td>
             </tr>
