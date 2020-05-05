@@ -3,6 +3,7 @@
  * If the requested user exists, the middleware updates it, otherwise it creates a new entity.
  * Redirects to the user's profile if successful.
  */
+
 const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {

@@ -78,7 +78,6 @@ module.exports = function (app) {
     app.use(
         '/games/edit/:gameid',
         authMW(objectrepository),
-        getUserMW(objectrepository),
         upload.single('gamefile'),
         getGameMW(objectrepository),
         saveGameMW(objectrepository),
@@ -88,13 +87,13 @@ module.exports = function (app) {
         '/games/del/:gameid',
         authMW(objectrepository),
         getGameMW(objectrepository),
+        getUserMW(objectrepository),
         delGameMW(objectrepository),
         renderMW(objectrepository, 'usersgames')
     );
     app.use(
         '/games/new',
         authMW(objectrepository),
-        getUserMW(objectrepository),
         upload.single('gamefile'),
         saveGameMW(objectrepository),
         renderMW(objectrepository, 'uploadedit')
@@ -103,6 +102,7 @@ module.exports = function (app) {
         '/games/:gameid',
         authMW(objectrepository),
         getGameMW(objectrepository),
+        getUserMW(objectrepository),
         renderMW(objectrepository, 'game')
     );
     app.get(
@@ -131,19 +131,19 @@ module.exports = function (app) {
         saveLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobbyeditnew')
     );
+    app.use(
+        '/lobbies/new',
+        authMW(objectrepository),
+        getGameMW(objectrepository),
+        getGamesMW(objectrepository),
+        saveLobbyMW(objectrepository),
+        renderMW(objectrepository, 'lobbyeditnew')
+    );
     app.get(
         '/lobbies/:lobbyid',
         authMW(objectrepository),
         getLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobby')
-    );
-    app.use(
-        '/lobbies/new',
-        authMW(objectrepository),
-        getGamesMW(objectrepository),
-        getUserMW(objectrepository),
-        saveLobbyMW(objectrepository),
-        renderMW(objectrepository, 'lobbyeditnew')
     );
     app.get(
         '/lobbies',

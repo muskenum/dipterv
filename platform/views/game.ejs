@@ -4,7 +4,7 @@
 <br>
 <div class="container">
     <h2><%= game.name %></h2>
-    <h5>Uploaded: <a href="/users/<%= game._owner%>"><%= game._owner %></a></h5>
+    <h5>Uploaded: <a href="/users/<%= game._owner%>"><%= user.username%></a></h5>
     <p><%= game.desc %></p>
     <a href="/lobbies/new" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
     <a href="/lobbies" class="btn btn-secondary">Lobbies <i class="fas fa-list"></i></a>

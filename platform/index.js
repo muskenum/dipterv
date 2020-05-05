@@ -8,15 +8,15 @@ app.use(bodyParser.json());
 
 app.use(express.static('static'));
 
-app.use(session({
+/*app.use(session({
     secret: 'jsklhkjkslghSJISADF',
-}));
+}));*/
 
 // Including all the routes
 require('./routes/index')(app);
 
 app.use((err, req, res, next) => {
-    res.end('SOmethingwent wrong...OOOps');
+    res.end('Somethingwent wrong...OOOps');
     console.log(err);
 });
 
