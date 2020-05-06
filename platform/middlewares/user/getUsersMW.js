@@ -2,6 +2,7 @@
  * Gets all users from the database and puts them on res.locals.users.
  *
  */
+
 const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {

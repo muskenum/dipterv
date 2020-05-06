@@ -16,7 +16,7 @@ app.use(express.static('static'));
 require('./routes/index')(app);
 
 app.use((err, req, res, next) => {
-    res.end('Somethingwent wrong...OOOps');
+    res.end('Something went wrong...Ooops');
     console.log(err);
 });
 

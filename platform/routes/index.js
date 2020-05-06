@@ -26,7 +26,7 @@ const GameModel = require('../models/game');
 const LobbyModel = require('../models/lobby');
 
 const multer = require('multer');
-const upload = multer({dest: 'uploads/'});
+const upload = multer({dest: './uploads'});
 
 module.exports = function (app) {
     const objectrepository = {
