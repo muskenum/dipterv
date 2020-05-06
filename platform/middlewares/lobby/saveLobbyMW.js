@@ -5,7 +5,6 @@ module.exports = function (objectRepository) {
     return function (req, res, next) {
         if ((typeof req.body.name === 'undefined')||
             (typeof req.body.capacity === 'undefined') ||
-            (typeof req.body.size === 'undefined') ||
             (typeof req.body._game === 'undefined')) {
             return next();
         }
@@ -14,9 +13,9 @@ module.exports = function (objectRepository) {
         }
         res.locals.lobby.name = req.body.name;
         res.locals.lobby.capacity = req.body.capacity;
-        res.locals.lobby.size = 100;
+        res.locals.lobby.size = 2;
         if (typeof res.locals.user === 'undefined') { // if the person is not logged in -> only for test purposes
-            res.locals.lobby._creator = "5eb170c2ba0d102547544d27"; //anonymous user
+            res.locals.lobby._creator = "5eb1b95c24b1ad46c817b47b"; //anonymous user
         } else {
             res.locals.lobby._creator = res.locals.user._id;
         }

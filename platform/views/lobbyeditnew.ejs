@@ -22,11 +22,11 @@
                                required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="game">Game</label>
-                        <select class="form-control" id="game" name="game" required>
+                        <label for="_game">Game</label>
+                        <select class="form-control" id="_game" name="_game" required>
                             <% if (typeof lobby === 'undefined'){ %>
                                 <% games.forEach((oneGame)=>{ %>
-                                    <option value="<%= oneGame.name %>"><%= oneGame.name %></option>
+                                    <option value="<%= oneGame._id %>"><%= oneGame.name %></option>
                             <% }); } else { %>
                                 <option value="<%= lobby._game %>" selected><%= lobby._game %></option>
                                 <% games.forEach((oneGame)=>{ %>
@@ -35,29 +35,17 @@
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="capapcity">Number of players</label>
-                        <select class="form-control" id="capapcity" name="capacity" required>
-                            <% if (typeof lobby === 'undefined'){ %>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            <% }else { %>
-                                <option value="<%= lobby.capacity %>"><%= lobby.capacity %></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            <% } %>
-                        </select>
+                        <label for="capacity">Number of players</label>
+                        <input type="number" class="form-control" id="capacity" name="capacity" required
+                               value="<%= (typeof lobby === 'undefined') ? '' : lobby.capacity %>">
                     </div>
-                    <!--<div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="team">Select your team:</label>
                         <select class="form-control" id="team" name="team" required>
                             <option value="red">Red</option>
                             <option value="blue">Blue</option>
                         </select>
-                    </div>-->
+                    </div>
                     <input type="submit" class="btn btn-primary"
                            value="<% if (typeof lobby === 'undefined'){ %>New lobby<% }else { %>Save<% } %>"/>
                     <a class="btn btn-link" href="/lobbies">Cancel</a>

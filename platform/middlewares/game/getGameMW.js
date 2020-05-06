@@ -8,7 +8,12 @@ const requireOption = require('../requireOption');
 module.exports = function (objectRepository) {
     const GameModel = requireOption(objectRepository, 'GameModel');
     return function (req, res, next) {
-        GameModel.findOne({_id: req.params.gameid}, (err, game) => {
+        if (typeof req.params.gameid !== 'undefined') {
+            actualID = req.params.gameid;
+        } else if (typeof res.locals.lobby !== 'undefined') {
+            actualID = res.locals.lobby._game;
+        }
+        GameModel.findOne({_id: actualID}, (err, game) => {
             if (err || !game) {
                 return next(err);
             }

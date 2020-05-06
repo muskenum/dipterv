@@ -10,7 +10,7 @@
                 <table class="table table-borderless">
                     <tr>
                         <th>Name:</th>
-                        <td><%# user.username %></td>
+                        <td><%= user.username %></td>
                     </tr>
                     <tr>
                         <th class="align-middle">Team:</th>
@@ -49,7 +49,7 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Game:</th>
-                    <td><%= lobby._game %></td>
+                    <td><%= game.name %></td>
                 </tr>
                 <tr>
                     <th>Players:</th>
@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <th>Host:</th>
-                    <td><%= lobby._creator %></td>
+                    <td><%= user.username %></td>
                 </tr>
                 <tr>
                     <td colspan="2">

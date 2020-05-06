@@ -7,7 +7,7 @@ const requireOption = require('../requireOption');
 module.exports = function (objectRepository) {
     const GameModel = requireOption(objectRepository, 'GameModel');
     return function (req, res, next) {
-        if (typeof res.locals.user === 'undefined') {
+        if (typeof req.params.userid === 'undefined') {
             GameModel.find({}, (err, games) => {
                 if (err) {
                     return next(err);
@@ -16,7 +16,7 @@ module.exports = function (objectRepository) {
                 return next();
             });
         } else {
-            GameModel.find({_owner: res.locals.user._id}, (err, games) => {
+            GameModel.find({_owner: req.params.userid}, (err, games) => {
                 if (err) {
                     return next(err);
                 }

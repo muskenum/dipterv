@@ -6,6 +6,6 @@ module.exports = function (objectRepository) {
             console.log("You are not logged in!");
             res.redirect('/');
         }*/
-        return next();
+        next();
     };
 };

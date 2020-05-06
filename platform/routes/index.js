@@ -134,7 +134,6 @@ module.exports = function (app) {
     app.use(
         '/lobbies/new',
         authMW(objectrepository),
-        getGameMW(objectrepository),
         getGamesMW(objectrepository),
         saveLobbyMW(objectrepository),
         renderMW(objectrepository, 'lobbyeditnew')
@@ -143,6 +142,8 @@ module.exports = function (app) {
         '/lobbies/:lobbyid',
         authMW(objectrepository),
         getLobbyMW(objectrepository),
+        getGameMW(objectrepository),
+        getUserMW(objectrepository),
         renderMW(objectrepository, 'lobby')
     );
     app.get(
