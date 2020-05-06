@@ -7,6 +7,7 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {
     const GameModel = requireOption(objectRepository, 'GameModel');
+    let actualID = "";
     return function (req, res, next) {
         if (typeof req.params.gameid !== 'undefined') {
             actualID = req.params.gameid;

@@ -48,7 +48,7 @@
                     </div>
                     <input type="submit" class="btn btn-primary"
                            value="<% if (typeof lobby === 'undefined'){ %>New lobby<% }else { %>Save<% } %>"/>
-                    <a class="btn btn-link" href="/lobbies">Cancel</a>
+                    <a class="btn btn-link" href="/lobbies/<%= lobby._id %>">Cancel</a>
                 </div>
             </form>
         </div>

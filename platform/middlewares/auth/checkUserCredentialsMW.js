@@ -1,19 +1,24 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {
+    const UserModel = requireOption(objectRepository, 'UserModel');
     return function (req, res, next) {
-        if ((typeof req.body.password === 'undefined') ||
-            (typeof req.body.username === 'undefined')) {
+        if ((typeof req.body.username === 'undefined') ||
+            (typeof req.body.pass === 'undefined')) {
             return next();
-        } else if ((req.body.password === 'alma') && (req.body.username === 'admin')) {
-            req.session.loggedin = true;
-            req.session.userID = 69;
-            return req.session.save((err) => {
-                return res.redirect('/games');
+        }
+        else {
+            UserModel.findOne({username: req.body.username, pass: req.body.pass}, (err, user) => {
+                if (err || !user) {
+                    res.locals.error = 'Wrong username or password!';
+                    return next(err);
+                }
+                req.session.loggedin = true;
+                req.session.userID = user._id;
+                return req.session.save((err) => {
+                    return res.redirect('/games');
+                });
             });
-        } else {
-            res.locals.error = 'Wrong username or password!'
-            return next();
-        }next();
+        }
     };
 };

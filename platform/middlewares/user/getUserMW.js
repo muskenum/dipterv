@@ -21,7 +21,6 @@ module.exports = function (objectRepository) {
                 return next(err);
             }
             res.locals.user = user;
-            return next();
         });
     };
 };

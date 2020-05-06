@@ -1,6 +1,5 @@
 const authMW = require('../middlewares/auth/authMW');
 const checkUserCredentialsMW = require('../middlewares/auth/checkUserCredentialsMW');
-const handleWrongPassMW = require('../middlewares/auth/handleWrongPassMW');
 const logoutMW = require('../middlewares/auth/logoutMW');
 
 const delGameMW = require('../middlewares/game/delGameMW');
@@ -118,12 +117,6 @@ module.exports = function (app) {
         renderMW(objectrepository, 'chat')
     );
     app.use(
-        '/login',
-        checkUserCredentialsMW(objectrepository),
-        handleWrongPassMW(objectrepository),
-        renderMW(objectrepository, 'login')
-    );
-    app.use(
         '/lobbies/edit/:lobbyid',
         authMW(objectrepository),
         getLobbyMW(objectrepository),
@@ -152,11 +145,16 @@ module.exports = function (app) {
         getLobbiesMW(objectrepository),
         renderMW(objectrepository, 'lobbies')
     );
+    app.use(
+        '/login',
+        checkUserCredentialsMW(objectrepository),
+        renderMW(objectrepository, 'login')
+    );
     app.get(
         '/logout',
         authMW(objectrepository),
         logoutMW(objectrepository),
-        renderMW(objectrepository, '/')
+        renderMW(objectrepository, 'index')
     );
     app.get(
         '/',

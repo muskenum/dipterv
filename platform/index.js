@@ -8,9 +8,17 @@ app.use(bodyParser.json());
 
 app.use(express.static('static'));
 
-/*app.use(session({
+app.use(session({
     secret: 'jsklhkjkslghSJISADF',
-}));*/
+    resave: false,
+    saveUninitialized: false,
+}));
+
+app.use((req, res, next)=>{
+    console.log(Date.now());
+    console.log(req.session);
+    return next();
+});
 
 // Including all the routes
 require('./routes/index')(app);
