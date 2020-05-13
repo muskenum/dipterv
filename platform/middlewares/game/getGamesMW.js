@@ -7,6 +7,7 @@ const requireOption = require('../requireOption');
 module.exports = function (objectRepository) {
     const GameModel = requireOption(objectRepository, 'GameModel');
     return function (req, res, next) {
+        console.log("getGamesMW");
         if (typeof req.params.userid === 'undefined') {
             GameModel.find({}, (err, games) => {
                 if (err) {

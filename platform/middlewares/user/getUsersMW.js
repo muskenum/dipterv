@@ -8,6 +8,7 @@ const requireOption = require('../requireOption');
 module.exports = function (objectRepository) {
     const UserModel = requireOption(objectRepository, 'UserModel');
     return function (req, res, next) {
+        console.log("getUsersMW");
         UserModel.find({}, (err, users) => {
             if (err) {
                 return next(err);

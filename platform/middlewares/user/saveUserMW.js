@@ -9,6 +9,7 @@ const requireOption = require('../requireOption');
 module.exports = function (objectRepository) {
     const UserModel = requireOption(objectRepository, 'UserModel');
     return function (req, res, next) {
+        console.log("saveUserMW");
         if ((typeof req.body.mail === 'undefined') ||
             (typeof req.body.name === 'undefined') ||
             (typeof req.body.pass === 'undefined') ||

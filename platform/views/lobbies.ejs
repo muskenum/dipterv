@@ -18,7 +18,7 @@
         <% lobbies.forEach((oneLobby)=>{ %>
             <tr>
                 <td class="align-middle"><%= oneLobby.name %></td>
-                <td class="align-middle"><a href="/games/<%= oneLobby._game %>"><%= oneLobby._game%></a></td>
+                <td class="align-middle"><a href="/games/<%= oneLobby._game %>"><%= oneLobby._game %></a></td>
                 <td class="align-middle"><%= oneLobby.size %>/<%= oneLobby.capacity %></td>
                 <td><a href="/lobbies/<%= oneLobby._id %>" class="btn btn-block btn-primary">Join <i
                                 class="fas fa-sign-in-alt"></i></a></td>

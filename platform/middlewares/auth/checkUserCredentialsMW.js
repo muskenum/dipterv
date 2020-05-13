@@ -11,6 +11,7 @@ module.exports = function (objectRepository) {
             UserModel.findOne({username: req.body.username, pass: req.body.pass}, (err, user) => {
                 if (err || !user) {
                     res.locals.error = 'Wrong username or password!';
+                    console.log("Wrong username or password!");
                     return next(err);
                 }
                 req.session.loggedin = true;

@@ -15,7 +15,10 @@
         </tr>
     </table>
     <a href="/users/<%= user._id %>/games" class="btn btn-success">User's games <i class="fas fa-gamepad"></i></a>
-    <a href="/users/edit/<%= user._id %>" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+    <% if (user._id === session.userID){ %>
+        <a href="/users/edit/<%= user._id %>" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+    <% }else{
+    } %>
 </div>
 
 <%- include ('templates/footer') -%>

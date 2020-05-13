@@ -7,8 +7,9 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectRepository) {
     const GameModel = requireOption(objectRepository, 'GameModel');
-    let actualID = "";
     return function (req, res, next) {
+        console.log("getGameMW");
+        let actualID = "";
         if (typeof req.params.gameid !== 'undefined') {
             actualID = req.params.gameid;
         } else if (typeof res.locals.lobby !== 'undefined') {

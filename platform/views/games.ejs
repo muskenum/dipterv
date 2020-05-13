@@ -1,5 +1,9 @@
 <%- include ('templates/header') -%>
-<%- include ('templates/navbar_min') -%>
+<% if (typeof session === 'undefined') { %>
+    <%- include ('templates/navbar_min') %>
+<% } else { %>
+    <%- include ('templates/navbar_full') %>
+<% } %>
 
 <section class="jumbotron text-center">
     <div class="container">
@@ -8,8 +12,11 @@
             players and form a team! There is only one rule: always have fun, be respectful and never rage! Sign up, if
             you are interested in making your own games, or log in if you already have an account.</p>
         <div class="container">
-            <a href="/login" class="btn btn-primary my-2">Log in</a>
-            <a href="/users/new" role="button" class="btn my-2 btn-outline-primary">Sign up</a>
+            <% if (typeof session === 'undefined'){ %>
+                <a href="/login" class="btn btn-primary my-2">Log in</a>
+                <a href="/users/new" role="button" class="btn my-2 btn-outline-primary">Sign up</a>
+            <% }else{
+            } %>
         </div>
     </div>
 </section>

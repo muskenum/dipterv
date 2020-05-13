@@ -106,6 +106,7 @@ module.exports = function (app) {
     );
     app.get(
         '/games',
+        authMW(objectrepository),
         getGamesMW(objectrepository),
         renderMW(objectrepository, 'games')
     );
