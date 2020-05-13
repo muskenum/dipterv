@@ -6,7 +6,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(express.static('static'));
@@ -51,7 +51,9 @@ app.use((err, req, res, next) => {
     console.log(err);
 });
 
-const port = 3000;
+/*const port = 3000;
 http.listen(port, (req, res) => {
     console.log(`Listening on ${port}`);
-});
+});*/
+const port = app.listen(process.env.PORT || 3000);
+http.listen(port);
