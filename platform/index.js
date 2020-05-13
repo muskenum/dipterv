@@ -19,20 +19,24 @@ app.use(session({
 
 app.use((req, res, next) => {
     console.log(Date.now());
-    console.log(req.session);
+    //console.log(req.session);
     console.log(res.locals.session);
     return next();
 });
 
 io.on('connection', socket => {
     console.log('A user has connected');
+    socket.on('user', data => {
+        console.log(data);
+        io.emit('userName', data);
+    });
     socket.on('message', data => {
         console.log(data);
         io.emit('prevMsg', data);
     });
-    socket.on('typing', data => {
+    /*socket.on('typing', data => {
         io.broadcast('typing', data);
-    });
+    });*/
     socket.on('disconnect', data => {
         console.log('A user has disconnected');
     });

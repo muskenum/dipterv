@@ -54,6 +54,7 @@
     let socket = io();
 
     function sendMsg() {
+        socket.emit('user', '<%= session.userID %>');
         socket.emit('message', $('#message').val());
         $('#message').val('');
     }
@@ -63,8 +64,11 @@
             sendMsg();
         }
     });
+    socket.on('userName', data => {
+        $('#chat').append(data + ": ");
+    });
     socket.on('prevMsg', data => {
-        $('#chat').append(': ' + data + "\n");
+        $('#chat').append(data + "\n");
         updateScroll();
     });
 </script>
