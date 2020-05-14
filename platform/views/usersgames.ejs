@@ -18,7 +18,7 @@
                 <td><%= oneGame.desc %></td>
                 <td width="15%">
                     <a href="/lobbies/new" class="btn btn-block btn-success">Play <i class="fas fa-gamepad"></i></a>
-                    <% if (oneGame._owner == session.userID){ %>
+                    <% if (oneGame._owner == session.user._id){ %>
                         <a href="/games/edit/<%= oneGame._id %>" class="btn btn-block btn-primary">Edit <i
                                     class="fas fa-edit"></i></a>
                         <a href="/games/del/<%= oneGame._id %>" class="btn btn-block btn-danger">Delete <i

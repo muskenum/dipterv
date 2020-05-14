@@ -54,7 +54,7 @@
     let socket = io();
 
     function sendMsg() {
-        socket.emit('user', '<%= session.userID %>');
+        socket.emit('user', '<%= session.user.username %>');
         socket.emit('message', $('#message').val());
         $('#message').val('');
     }

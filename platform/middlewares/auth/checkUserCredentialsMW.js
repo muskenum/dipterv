@@ -15,7 +15,7 @@ module.exports = function (objectRepository) {
                     return next(err);
                 }
                 req.session.loggedin = true;
-                req.session.userID = user._id;
+                req.session.user = user;
                 return req.session.save((err) => {
                     return res.redirect('/games');
                 });

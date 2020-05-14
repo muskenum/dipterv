@@ -17,8 +17,8 @@ module.exports = function (objectRepository) {
         } else if (typeof res.locals.lobby !== 'undefined') {
             actualID = res.locals.lobby._creator;
         } else if (typeof res.locals.session !== 'undefined') {
-            console.log(res.locals.session.userID);
-            actualID = res.locals.session.userID;
+            console.log(res.locals.session.user._id);
+            actualID = res.locals.session.user._id;
         }
         UserModel.findOne({_id: actualID}, (err, user) => {
             if (err || !user) {

@@ -1,6 +1,17 @@
 <%- include ('templates/header') -%>
 <%- include ('templates/navbar_full') -%>
-
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/large_checkbox.css">
+<style>
+    #chat {
+        padding-left: 5px;
+        overflow: scroll;
+        height: 200px;
+        color: white;
+        white-space: pre-line;
+    }
+</style>
 <div class="container">
     <br>
     <h2><%= lobby.name %></h2>
@@ -10,7 +21,7 @@
                 <table class="table table-borderless">
                     <tr>
                         <th>Name:</th>
-                        <td><%= user.username %></td>
+                        <td><%= session.user.username %></td>
                     </tr>
                     <tr>
                         <th class="align-middle">Team:</th>
@@ -21,16 +32,14 @@
                     </tr>
                 </table>
             </div>
-            <div id="chat" class="row border bg-dark" style="height: 200px; overflow: scroll">
+            <div id="chat" class="row border bg-dark">
             </div>
             <div class="row">
-                <form class="form-group" style="width: 100%">
-                    <div class="form-group">
-                        <button class="btn btn-primary form-control float-right" style="width: 10%">Send</button>
-                        <input class="form-control" id="message" placeholder="Send a message..." autocomplete="off"
-                               style="width: 89%"/>
-                    </div>
-                </form>
+                <div class="form-group" style="width: 100%">
+                    <button class="btn btn-primary form-control float-right" style="width: 10%" onclick="sendMsg()">Send</button>
+                    <input type="text" class="form-control" id="message" placeholder="Send a message..." autocomplete="off"
+                           style="width: 89%"/>
+                </div>
             </div>
             <div class="align-middle custom-control custom-checkbox checkbox-xl">
                 <input type="checkbox" class="custom-control-input" id="readyCheckbox">
@@ -61,10 +70,9 @@
                 </tr>
                 <tr>
                     <td class="text-center" colspan="2">
-                        <% if (lobby._creator == session.userID){ %>
+                        <% if (lobby._creator == session.user._id){ %>
                             <a href="/lobbies/edit/<%= lobby._id %>" class="btn btn-block btn-secondary">Lobby Settings
-                                <i
-                                        class="fas fa-cog"></i></a>
+                                <i class="fas fa-cog"></i></a>
                         <% }else{ %>
                             <strong>Always have fun, be respectful and never rage!</strong>
                         <% } %>
@@ -75,5 +83,31 @@
         </div>
     </div>
 </div>
+<script>
+    function updateScroll() {
+        let element = $('#chat')[0];
+        element.scrollTop = element.scrollHeight;
+    }
 
+    let socket = io();
+
+    function sendMsg() {
+        socket.emit('user', '<%= session.user.username %>');
+        socket.emit('message', $('#message').val());
+        $('#message').val('');
+    }
+
+    $('#message').keypress(e => {
+        if (e.key === 'Enter') {
+            sendMsg();
+        }
+    });
+    socket.on('userName', data => {
+        $('#chat').append(data + ": ");
+    });
+    socket.on('prevMsg', data => {
+        $('#chat').append(data + "\n");
+        updateScroll();
+    });
+</script>
 <%- include ('templates/footer') -%>
