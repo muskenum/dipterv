@@ -51,9 +51,7 @@ app.use((err, req, res, next) => {
     console.log(err);
 });
 
-/*const port = 3000;
+const port = process.env.PORT || 3000;
 http.listen(port, (req, res) => {
     console.log(`Listening on ${port}`);
-});*/
-const port = app.listen(process.env.PORT || 3000);
-http.listen(port);
+});
