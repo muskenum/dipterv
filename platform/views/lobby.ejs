@@ -60,9 +60,14 @@
                     <td><%= user.username %></td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        <a href="/lobbies/edit/<%= lobby._id %>" class="btn btn-block btn-secondary">Lobby Settings <i
-                                    class="fas fa-cog"></i></a>
+                    <td class="text-center" colspan="2">
+                        <% if (lobby._creator == session.userID){ %>
+                            <a href="/lobbies/edit/<%= lobby._id %>" class="btn btn-block btn-secondary">Lobby Settings
+                                <i
+                                        class="fas fa-cog"></i></a>
+                        <% }else{ %>
+                            <strong>Always have fun, be respectful and never rage!</strong>
+                        <% } %>
                     </td>
                 </tr>
             </table>

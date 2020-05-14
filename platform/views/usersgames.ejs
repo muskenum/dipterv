@@ -3,7 +3,7 @@
 
 <br>
 <div class="container">
-    <a href="/users/<%=user._id%>" class="btn btn-outline-primary float-right">Go back</a>
+    <a href="/users/<%= user._id %>" class="btn btn-outline-primary float-right">Go back</a>
     <h2><%= user.username %>'s uploaded games</h2>
     <table class="table table-bordered text-justify">
         <thead class="thead-dark">
@@ -18,10 +18,13 @@
                 <td><%= oneGame.desc %></td>
                 <td width="15%">
                     <a href="/lobbies/new" class="btn btn-block btn-success">Play <i class="fas fa-gamepad"></i></a>
-                    <a href="/games/edit/<%= oneGame._id %>" class="btn btn-block btn-primary">Edit <i
-                                class="fas fa-edit"></i></a>
-                    <a href="/games/del/<%= oneGame._id %>" class="btn btn-block btn-danger">Delete <i
-                                class="fas fa-trash"></i></a>
+                    <% if (oneGame._owner == session.userID){ %>
+                        <a href="/games/edit/<%= oneGame._id %>" class="btn btn-block btn-primary">Edit <i
+                                    class="fas fa-edit"></i></a>
+                        <a href="/games/del/<%= oneGame._id %>" class="btn btn-block btn-danger">Delete <i
+                                    class="fas fa-trash"></i></a>
+                    <% }else{
+                    } %>
                 </td>
             </tr>
         <% }); %>

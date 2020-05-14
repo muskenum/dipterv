@@ -20,6 +20,7 @@ module.exports = function (objectRepository) {
                 return next(err);
             }
             res.locals.game = game;
+            console.log(res.locals.game._owner);
             return next();
         });
     };

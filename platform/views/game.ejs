@@ -8,7 +8,7 @@
     <p><%= game.desc %></p>
     <a href="/lobbies/new" class="btn btn-success">Play <i class="fas fa-gamepad"></i></a>
     <a href="/lobbies" class="btn btn-secondary">Lobbies <i class="fas fa-list"></i></a>
-    <% if (game._owner === session.userID){ %>
+    <% if (game._owner == session.userID){ %>
         <a href="/games/edit/<%= game._id %>" class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
         <a href="/games/del/<%= game._id %>" class="btn btn-danger">Delete <i class="fas fa-trash"></i></a>
     <% }else{
