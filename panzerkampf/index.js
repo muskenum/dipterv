@@ -2,6 +2,7 @@
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
+const port = process.env.port || 5000;
 
 const Game = require('./server/Game');
 
@@ -10,6 +11,10 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 const game = new Game();
+
+app.set('port', port);
+app.use('/client', express.static(__dirname + '/client'));
+app.use('/dist', express.static(__dirname + '/dist'));
 
 //Routing
 app.get('/', (req, res) => {
@@ -56,9 +61,8 @@ io.on('connection', socket => {
 setInterval(() => {
     game.update();
     game.sendState();
-}, 10000 / 60);
+}, 10000 / 180);
 
-const port = process.env.port || 5000;
 //Starting the server
 server.listen(port, () => {
     console.log(`Listening on ${port}`);

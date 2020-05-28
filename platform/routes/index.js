@@ -13,6 +13,7 @@ const sendMsgMW = require('../middlewares/generic/sendMsgMW');
 const getLobbiesMW = require('../middlewares/lobby/getLobbiesMW');
 const getLobbyMW = require('../middlewares/lobby/getLobbyMW');
 const saveLobbyMW = require('../middlewares/lobby/saveLobbyMW');
+const startGameMW = require('../middlewares/lobby/startGameMW');
 
 const delUserMW = require('../middlewares/user/delUserMW');
 const getActiveUsersMW = require('../middlewares/user/getActiveUsersMW');
@@ -156,6 +157,11 @@ module.exports = function (app) {
         authMW(objectrepository),
         logoutMW(objectrepository),
         renderMW(objectrepository, 'index')
+    );
+    app.use(
+        '/matches',
+        authMW(objectrepository),
+        startGameMW(objectrepository)
     );
     app.get(
         '/',

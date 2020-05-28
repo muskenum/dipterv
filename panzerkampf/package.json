@@ -2,7 +2,11 @@
   "name": "panzerkampf",
   "version": "1.0.0",
   "dependencies": {
+    "browserify": "^16.5.1",
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "jquery": "^3.5.1",
+    "less": "^3.11.1",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "latest"
   }
 }

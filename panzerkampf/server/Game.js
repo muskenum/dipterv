@@ -2,6 +2,7 @@
  * Game class on the server to manage the state of existing players
  * and entities.
  */
+const constants = require('../lib/constants');
 
 const Shell = require('./Shell');
 const Player = require('./Player');
