@@ -20,11 +20,7 @@ module.exports = function (objectRepository) {
         res.locals.game.name = req.body.name;
         res.locals.game.desc = req.body.desc;
         res.locals.game.gamefile = req.file.filename;
-        if (typeof res.locals.user === 'undefined') { // if the person is not logged in -> only for test purposes
-            res.locals.game._owner = "5eb1b95c24b1ad46c817b47b"; //anonymous user
-        } else {
-            res.locals.game._owner = res.locals.user._id;
-        }
+        res.locals.game._owner = res.locals.session.user._id;
         res.locals.game.save((err) => {
             if (err) {
                 return next(err);

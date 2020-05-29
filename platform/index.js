@@ -17,13 +17,6 @@ app.use(session({
     saveUninitialized: false,
 }));
 
-app.use((req, res, next) => {
-    console.log(Date.now());
-    console.log(req.session);
-    //console.log(res.locals.session);
-    return next();
-});
-
 io.on('connection', socket => {
     console.log('A user has connected');
     socket.on('user', data => {
@@ -34,14 +27,10 @@ io.on('connection', socket => {
         console.log(data);
         io.emit('prevMsg', data);
     });
-    /*socket.on('typing', data => {
-        io.broadcast('typing', data);
-    });*/
     socket.on('disconnect', data => {
         console.log('A user has disconnected');
     });
 });
-
 
 // Including all the routes
 require('./routes/index')(app);

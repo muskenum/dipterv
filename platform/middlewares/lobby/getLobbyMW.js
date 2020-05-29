@@ -13,6 +13,7 @@ module.exports = function (objectRepository) {
                 return next(err);
             }
             res.locals.lobby = lobby;
+            res.locals.lobby.size++;
             return next();
         });
     };

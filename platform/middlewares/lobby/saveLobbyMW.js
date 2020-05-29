@@ -13,12 +13,8 @@ module.exports = function (objectRepository) {
         }
         res.locals.lobby.name = req.body.name;
         res.locals.lobby.capacity = req.body.capacity;
-        res.locals.lobby.size = 2;
-        if (typeof res.locals.user === 'undefined') { // if the person is not logged in -> only for test purposes
-            res.locals.lobby._creator = "5eb1b95c24b1ad46c817b47b"; //anonymous user
-        } else {
-            res.locals.lobby._creator = res.locals.user._id;
-        }
+        res.locals.lobby.size = 1;
+        res.locals.lobby._creator = res.locals.session.user._id;
         res.locals.lobby._game = req.body._game;
         res.locals.lobby.save((err) => {
             if (err) {

@@ -25,6 +25,8 @@ module.exports = function (objectRepository) {
         res.locals.user.pass = req.body.pass;
         res.locals.user.username = req.body.username;
         res.locals.user.country = req.body.country;
+        req.session.loggedin = true;
+        req.session.user = res.locals.user;
         res.locals.user.save((err) => {
             if (err) {
                 return next(err);
